@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Meteorologia (MT)</title>
+    
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #222;
+}
+.question {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.question h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+}
+label {
+    display: block;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    margin-bottom: 4px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+label:hover {
+    background: #f0f0f0;
+}
+button {
+    background: #007AFF;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button:hover {
+    background: #005FCC;
+}
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Simulado Meteorologia (MT) – ANAC PP</h1>
+    <div class="question">
+<h3>1. Virga é:</h3>
+<label><input type="radio" name="q0" value="Chuva forte"> Chuva forte</label>
+<label><input type="radio" name="q0" value="Granizo"> Granizo</label>
+<label><input type="radio" name="q0" value="Precipitação que evapora antes de atingir o solo"> Precipitação que evapora antes de atingir o solo</label>
+<label><input type="radio" name="q0" value="Nuvem baixa"> Nuvem baixa</label>
+<input type="hidden" name="a0" value="Precipitação que evapora antes de atingir o solo">
+<button onclick="corrigirQuestao(0)">Corrigir</button>
+<div class="result" id="feedback0"></div>
+</div>
+<div class="question">
+<h3>2. METAR SBGR 251500Z 12015KT 9999 FEW020 26/17 Q1015 indica:</h3>
+<label><input type="radio" name="q1" value="Vento calmo"> Vento calmo</label>
+<label><input type="radio" name="q1" value="Pista molhada"> Pista molhada</label>
+<label><input type="radio" name="q1" value="Céu encoberto"> Céu encoberto</label>
+<label><input type="radio" name="q1" value="Poucas nuvens a 2.000 pés"> Poucas nuvens a 2.000 pés</label>
+<input type="hidden" name="a1" value="Poucas nuvens a 2.000 pés">
+<button onclick="corrigirQuestao(1)">Corrigir</button>
+<div class="result" id="feedback1"></div>
+</div>
+<div class="question">
+<h3>3. O tipo de nuvem mais associado a trovoadas é:</h3>
+<label><input type="radio" name="q2" value="Cirrus"> Cirrus</label>
+<label><input type="radio" name="q2" value="Stratus"> Stratus</label>
+<label><input type="radio" name="q2" value="Cumulonimbus"> Cumulonimbus</label>
+<label><input type="radio" name="q2" value="Altostratus"> Altostratus</label>
+<input type="hidden" name="a2" value="Cumulonimbus">
+<button onclick="corrigirQuestao(2)">Corrigir</button>
+<div class="result" id="feedback2"></div>
+</div>
+<div class="question">
+<h3>4. Uma frente fria é caracterizada por:</h3>
+<label><input type="radio" name="q3" value="Pressão estável"> Pressão estável</label>
+<label><input type="radio" name="q3" value="Pressão subindo"> Pressão subindo</label>
+<label><input type="radio" name="q3" value="Pressão caindo"> Pressão caindo</label>
+<label><input type="radio" name="q3" value="Céu limpo"> Céu limpo</label>
+<input type="hidden" name="a3" value="Pressão caindo">
+<button onclick="corrigirQuestao(3)">Corrigir</button>
+<div class="result" id="feedback3"></div>
+</div>
+<div class="question">
+<h3>5. Ao cruzar uma frente fria, a tendência da temperatura é:</h3>
+<label><input type="radio" name="q4" value="Subir"> Subir</label>
+<label><input type="radio" name="q4" value="Estabilizar"> Estabilizar</label>
+<label><input type="radio" name="q4" value="Oscilar"> Oscilar</label>
+<label><input type="radio" name="q4" value="Cair"> Cair</label>
+<input type="hidden" name="a4" value="Cair">
+<button onclick="corrigirQuestao(4)">Corrigir</button>
+<div class="result" id="feedback4"></div>
+</div>
+
+<script>
+const explicacoes = ["A alternativa correta é: \"Precipitação que evapora antes de atingir o solo\".", "A alternativa correta é: \"Poucas nuvens a 2.000 pés\".", "A alternativa correta é: \"Cumulonimbus\".", "A alternativa correta é: \"Pressão caindo\".", "A alternativa correta é: \"Cair\"."];
+
+<script>
+function corrigirQuestao(i) {
+    const correta = document.querySelector(`input[name=a${i}]`).value;
+    const alternativas = document.getElementsByName(`q${i}`);
+    let marcada = null;
+    for (let alt of alternativas) {
+        if (alt.checked) {
+            marcada = alt.value;
+        }
+    }
+
+    const feedback = document.getElementById(`feedback${i}`);
+    if (marcada === correta) {
+        feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
+    } else {
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+    }
+}
+</script>
+
+</script>
+</body>
+</html>

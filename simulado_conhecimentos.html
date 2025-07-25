@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Conhecimentos Técnicos (CT)</title>
+    
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #222;
+}
+.question {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.question h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+}
+label {
+    display: block;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    margin-bottom: 4px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+label:hover {
+    background: #f0f0f0;
+}
+button {
+    background: #007AFF;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button:hover {
+    background: #005FCC;
+}
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Simulado Conhecimentos Técnicos (CT) – ANAC PP</h1>
+    <div class="question">
+<h3>1. O flape é considerado uma superfície:</h3>
+<label><input type="radio" name="q0" value="Primária"> Primária</label>
+<label><input type="radio" name="q0" value="Secundária"> Secundária</label>
+<label><input type="radio" name="q0" value="Estabilizadora"> Estabilizadora</label>
+<label><input type="radio" name="q0" value="Estrutural"> Estrutural</label>
+<input type="hidden" name="a0" value="Secundária">
+<button onclick="corrigirQuestao(0)">Corrigir</button>
+<div class="result" id="feedback0"></div>
+</div>
+<div class="question">
+<h3>2. Eficiência propulsiva relaciona-se a:</h3>
+<label><input type="radio" name="q1" value="Peso do motor"> Peso do motor</label>
+<label><input type="radio" name="q1" value="Arrasto parasita"> Arrasto parasita</label>
+<label><input type="radio" name="q1" value="Potência no eixo e empuxo gerado"> Potência no eixo e empuxo gerado</label>
+<label><input type="radio" name="q1" value="Temperatura externa"> Temperatura externa</label>
+<input type="hidden" name="a1" value="Potência no eixo e empuxo gerado">
+<button onclick="corrigirQuestao(1)">Corrigir</button>
+<div class="result" id="feedback1"></div>
+</div>
+<div class="question">
+<h3>3. Uma aeronave cantiléver se caracteriza por:</h3>
+<label><input type="radio" name="q2" value="Ter montantes externos"> Ter montantes externos</label>
+<label><input type="radio" name="q2" value="Não possuir suportes externos"> Não possuir suportes externos</label>
+<label><input type="radio" name="q2" value="Ter duas asas"> Ter duas asas</label>
+<label><input type="radio" name="q2" value="Ser biplano"> Ser biplano</label>
+<input type="hidden" name="a2" value="Não possuir suportes externos">
+<button onclick="corrigirQuestao(2)">Corrigir</button>
+<div class="result" id="feedback2"></div>
+</div>
+<div class="question">
+<h3>4. Os montantes sofrem qual tipo de esforço?</h3>
+<label><input type="radio" name="q3" value="Flexão"> Flexão</label>
+<label><input type="radio" name="q3" value="Compressão"> Compressão</label>
+<label><input type="radio" name="q3" value="Tração"> Tração</label>
+<label><input type="radio" name="q3" value="Torção"> Torção</label>
+<input type="hidden" name="a3" value="Compressão">
+<button onclick="corrigirQuestao(3)">Corrigir</button>
+<div class="result" id="feedback3"></div>
+</div>
+<div class="question">
+<h3>5. Quantos giros o virabrequim faz em 2 cursos do pistão (motor 4T)?</h3>
+<label><input type="radio" name="q4" value="1"> 1</label>
+<label><input type="radio" name="q4" value="2"> 2</label>
+<label><input type="radio" name="q4" value="3"> 3</label>
+<label><input type="radio" name="q4" value="4"> 4</label>
+<input type="hidden" name="a4" value="2">
+<button onclick="corrigirQuestao(4)">Corrigir</button>
+<div class="result" id="feedback4"></div>
+</div>
+
+<script>
+const explicacoes = ["A alternativa correta é: \"Secundária\".", "A alternativa correta é: \"Potência no eixo e empuxo gerado\".", "A alternativa correta é: \"Não possuir suportes externos\".", "A alternativa correta é: \"Compressão\".", "A alternativa correta é: \"2\"."];
+
+<script>
+function corrigirQuestao(i) {
+    const correta = document.querySelector(`input[name=a${i}]`).value;
+    const alternativas = document.getElementsByName(`q${i}`);
+    let marcada = null;
+    for (let alt of alternativas) {
+        if (alt.checked) {
+            marcada = alt.value;
+        }
+    }
+
+    const feedback = document.getElementById(`feedback${i}`);
+    if (marcada === correta) {
+        feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
+    } else {
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+    }
+}
+</script>
+
+</script>
+</body>
+</html>

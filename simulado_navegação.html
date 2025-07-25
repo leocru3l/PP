@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Navegação (NV)</title>
+    
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #222;
+}
+.question {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.question h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+}
+label {
+    display: block;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    margin-bottom: 4px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+label:hover {
+    background: #f0f0f0;
+}
+button {
+    background: #007AFF;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button:hover {
+    background: #005FCC;
+}
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Simulado Navegação (NV) – ANAC PP</h1>
+    <div class="question">
+<h3>1. A carta WAC possui escala de:</h3>
+<label><input type="radio" name="q0" value="1:500.000"> 1:500.000</label>
+<label><input type="radio" name="q0" value="1:250.000"> 1:250.000</label>
+<label><input type="radio" name="q0" value="1:1.000.000"> 1:1.000.000</label>
+<label><input type="radio" name="q0" value="1:750.000"> 1:750.000</label>
+<input type="hidden" name="a0" value="1:1.000.000">
+<button onclick="corrigirQuestao(0)">Corrigir</button>
+<div class="result" id="feedback0"></div>
+</div>
+<div class="question">
+<h3>2. Qual instrumento usamos para calcular VV/DV e GS?</h3>
+<label><input type="radio" name="q1" value="Régua"> Régua</label>
+<label><input type="radio" name="q1" value="Computador de voo"> Computador de voo</label>
+<label><input type="radio" name="q1" value="Cartão de navegação"> Cartão de navegação</label>
+<label><input type="radio" name="q1" value="Altímetro"> Altímetro</label>
+<input type="hidden" name="a1" value="Computador de voo">
+<button onclick="corrigirQuestao(1)">Corrigir</button>
+<div class="result" id="feedback1"></div>
+</div>
+<div class="question">
+<h3>3. Se uma aeronave consome 24L/h e sobe por 15 min, consumirá:</h3>
+<label><input type="radio" name="q2" value="3L"> 3L</label>
+<label><input type="radio" name="q2" value="6L"> 6L</label>
+<label><input type="radio" name="q2" value="9L"> 9L</label>
+<label><input type="radio" name="q2" value="12L"> 12L</label>
+<input type="hidden" name="a2" value="6L">
+<button onclick="corrigirQuestao(2)">Corrigir</button>
+<div class="result" id="feedback2"></div>
+</div>
+<div class="question">
+<h3>4. A carta Mercator é indicada para voos:</h3>
+<label><input type="radio" name="q3" value="Curto alcance"> Curto alcance</label>
+<label><input type="radio" name="q3" value="Longo alcance com rota loxodrômica"> Longo alcance com rota loxodrômica</label>
+<label><input type="radio" name="q3" value="Com navegação por GPS"> Com navegação por GPS</label>
+<label><input type="radio" name="q3" value="Com orientação por balizas NDB"> Com orientação por balizas NDB</label>
+<input type="hidden" name="a3" value="Longo alcance com rota loxodrômica">
+<button onclick="corrigirQuestao(3)">Corrigir</button>
+<div class="result" id="feedback3"></div>
+</div>
+<div class="question">
+<h3>5. 370 km equivalem a quantas milhas náuticas?</h3>
+<label><input type="radio" name="q4" value="199,8 NM"> 199,8 NM</label>
+<label><input type="radio" name="q4" value="270,5 NM"> 270,5 NM</label>
+<label><input type="radio" name="q4" value="330,2 NM"> 330,2 NM</label>
+<label><input type="radio" name="q4" value="420,4 NM"> 420,4 NM</label>
+<input type="hidden" name="a4" value="199,8 NM">
+<button onclick="corrigirQuestao(4)">Corrigir</button>
+<div class="result" id="feedback4"></div>
+</div>
+
+<script>
+const explicacoes = ["A alternativa correta é: \"1:1.000.000\".", "A alternativa correta é: \"Computador de voo\".", "A alternativa correta é: \"6L\".", "A alternativa correta é: \"Longo alcance com rota loxodrômica\".", "A alternativa correta é: \"199,8 NM\"."];
+
+<script>
+function corrigirQuestao(i) {
+    const correta = document.querySelector(`input[name=a${i}]`).value;
+    const alternativas = document.getElementsByName(`q${i}`);
+    let marcada = null;
+    for (let alt of alternativas) {
+        if (alt.checked) {
+            marcada = alt.value;
+        }
+    }
+
+    const feedback = document.getElementById(`feedback${i}`);
+    if (marcada === correta) {
+        feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
+    } else {
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+    }
+}
+</script>
+
+</script>
+</body>
+</html>

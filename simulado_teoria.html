@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Teoria de Voo (TV)</title>
+    
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #222;
+}
+.question {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.question h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+}
+label {
+    display: block;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    margin-bottom: 4px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+label:hover {
+    background: #f0f0f0;
+}
+button {
+    background: #007AFF;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button:hover {
+    background: #005FCC;
+}
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+    <h1>Simulado Teoria de Voo (TV) – ANAC PP</h1>
+    <div class="question">
+<h3>1. O alongamento da asa influencia:</h3>
+<label><input type="radio" name="q0" value="Potência do motor"> Potência do motor</label>
+<label><input type="radio" name="q0" value="Razão de subida"> Razão de subida</label>
+<label><input type="radio" name="q0" value="Estabilidade"> Estabilidade</label>
+<label><input type="radio" name="q0" value="Sustentação e arrasto"> Sustentação e arrasto</label>
+<input type="hidden" name="a0" value="Sustentação e arrasto">
+<button onclick="corrigirQuestao(0)">Corrigir</button>
+<div class="result" id="feedback0"></div>
+</div>
+<div class="question">
+<h3>2. O vento de proa durante o planeio causa:</h3>
+<label><input type="radio" name="q1" value="Maior distância"> Maior distância</label>
+<label><input type="radio" name="q1" value="Menor distância"> Menor distância</label>
+<label><input type="radio" name="q1" value="Aumento de sustentação"> Aumento de sustentação</label>
+<label><input type="radio" name="q1" value="Melhor razão de subida"> Melhor razão de subida</label>
+<input type="hidden" name="a1" value="Menor distância">
+<button onclick="corrigirQuestao(1)">Corrigir</button>
+<div class="result" id="feedback1"></div>
+</div>
+<div class="question">
+<h3>3. Aumentar o peso da aeronave afeta a velocidade de estol como?</h3>
+<label><input type="radio" name="q2" value="Diminui"> Diminui</label>
+<label><input type="radio" name="q2" value="Não altera"> Não altera</label>
+<label><input type="radio" name="q2" value="Aumenta"> Aumenta</label>
+<label><input type="radio" name="q2" value="Zera"> Zera</label>
+<input type="hidden" name="a2" value="Aumenta">
+<button onclick="corrigirQuestao(2)">Corrigir</button>
+<div class="result" id="feedback2"></div>
+</div>
+<div class="question">
+<h3>4. Uma aeronave mais pesada, em voo planado, terá:</h3>
+<label><input type="radio" name="q3" value="Maior razão de planeio"> Maior razão de planeio</label>
+<label><input type="radio" name="q3" value="Menor razão"> Menor razão</label>
+<label><input type="radio" name="q3" value="Mesma razão L/D"> Mesma razão L/D</label>
+<label><input type="radio" name="q3" value="Desempenho pior"> Desempenho pior</label>
+<input type="hidden" name="a3" value="Mesma razão L/D">
+<button onclick="corrigirQuestao(3)">Corrigir</button>
+<div class="result" id="feedback3"></div>
+</div>
+<div class="question">
+<h3>5. Em uma curva coordenada, o fator carga:</h3>
+<label><input type="radio" name="q4" value="Reduz"> Reduz</label>
+<label><input type="radio" name="q4" value="Aumenta"> Aumenta</label>
+<label><input type="radio" name="q4" value="Zera"> Zera</label>
+<label><input type="radio" name="q4" value="Fica constante"> Fica constante</label>
+<input type="hidden" name="a4" value="Aumenta">
+<button onclick="corrigirQuestao(4)">Corrigir</button>
+<div class="result" id="feedback4"></div>
+</div>
+
+<script>
+const explicacoes = ["A alternativa correta é: \"Sustentação e arrasto\".", "A alternativa correta é: \"Menor distância\".", "A alternativa correta é: \"Aumenta\".", "A alternativa correta é: \"Mesma razão L/D\".", "A alternativa correta é: \"Aumenta\"."];
+
+<script>
+function corrigirQuestao(i) {
+    const correta = document.querySelector(`input[name=a${i}]`).value;
+    const alternativas = document.getElementsByName(`q${i}`);
+    let marcada = null;
+    for (let alt of alternativas) {
+        if (alt.checked) {
+            marcada = alt.value;
+        }
+    }
+
+    const feedback = document.getElementById(`feedback${i}`);
+    if (marcada === correta) {
+        feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
+    } else {
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+    }
+}
+</script>
+
+</script>
+</body>
+</html>
