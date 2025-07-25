@@ -66,22 +66,22 @@ button:hover {
 <body>
     <h1>Simulado Meteorologia (MT) – ANAC PP</h1>
     <div class="question">
-<h3>1. Virga é:</h3>
-<label><input type="radio" name="q0" value="Chuva forte"> Chuva forte</label>
-<label><input type="radio" name="q0" value="Granizo"> Granizo</label>
-<label><input type="radio" name="q0" value="Precipitação que evapora antes de atingir o solo"> Precipitação que evapora antes de atingir o solo</label>
-<label><input type="radio" name="q0" value="Nuvem baixa"> Nuvem baixa</label>
-<input type="hidden" name="a0" value="Precipitação que evapora antes de atingir o solo">
+<h3>1. Uma frente fria é caracterizada por:</h3>
+<label><input type="radio" name="q0" value="Pressão estável"> Pressão estável</label>
+<label><input type="radio" name="q0" value="Pressão subindo"> Pressão subindo</label>
+<label><input type="radio" name="q0" value="Pressão caindo"> Pressão caindo</label>
+<label><input type="radio" name="q0" value="Céu limpo"> Céu limpo</label>
+<input type="hidden" name="a0" value="Pressão caindo">
 <button onclick="corrigirQuestao(0)">Corrigir</button>
 <div class="result" id="feedback0"></div>
 </div>
 <div class="question">
-<h3>2. METAR SBGR 251500Z 12015KT 9999 FEW020 26/17 Q1015 indica:</h3>
-<label><input type="radio" name="q1" value="Vento calmo"> Vento calmo</label>
-<label><input type="radio" name="q1" value="Pista molhada"> Pista molhada</label>
-<label><input type="radio" name="q1" value="Céu encoberto"> Céu encoberto</label>
-<label><input type="radio" name="q1" value="Poucas nuvens a 2.000 pés"> Poucas nuvens a 2.000 pés</label>
-<input type="hidden" name="a1" value="Poucas nuvens a 2.000 pés">
+<h3>2. Virga é:</h3>
+<label><input type="radio" name="q1" value="Chuva forte"> Chuva forte</label>
+<label><input type="radio" name="q1" value="Granizo"> Granizo</label>
+<label><input type="radio" name="q1" value="Precipitação que evapora antes de atingir o solo"> Precipitação que evapora antes de atingir o solo</label>
+<label><input type="radio" name="q1" value="Nuvem baixa"> Nuvem baixa</label>
+<input type="hidden" name="a1" value="Precipitação que evapora antes de atingir o solo">
 <button onclick="corrigirQuestao(1)">Corrigir</button>
 <div class="result" id="feedback1"></div>
 </div>
@@ -96,45 +96,51 @@ button:hover {
 <div class="result" id="feedback2"></div>
 </div>
 <div class="question">
-<h3>4. Uma frente fria é caracterizada por:</h3>
-<label><input type="radio" name="q3" value="Pressão estável"> Pressão estável</label>
-<label><input type="radio" name="q3" value="Pressão subindo"> Pressão subindo</label>
-<label><input type="radio" name="q3" value="Pressão caindo"> Pressão caindo</label>
-<label><input type="radio" name="q3" value="Céu limpo"> Céu limpo</label>
-<input type="hidden" name="a3" value="Pressão caindo">
+<h3>4. Ao cruzar uma frente fria, a tendência da temperatura é:</h3>
+<label><input type="radio" name="q3" value="Subir"> Subir</label>
+<label><input type="radio" name="q3" value="Estabilizar"> Estabilizar</label>
+<label><input type="radio" name="q3" value="Oscilar"> Oscilar</label>
+<label><input type="radio" name="q3" value="Cair"> Cair</label>
+<input type="hidden" name="a3" value="Cair">
 <button onclick="corrigirQuestao(3)">Corrigir</button>
 <div class="result" id="feedback3"></div>
 </div>
 <div class="question">
-<h3>5. Ao cruzar uma frente fria, a tendência da temperatura é:</h3>
-<label><input type="radio" name="q4" value="Subir"> Subir</label>
-<label><input type="radio" name="q4" value="Estabilizar"> Estabilizar</label>
-<label><input type="radio" name="q4" value="Oscilar"> Oscilar</label>
-<label><input type="radio" name="q4" value="Cair"> Cair</label>
-<input type="hidden" name="a4" value="Cair">
+<h3>5. METAR SBGR 251500Z 12015KT 9999 FEW020 26/17 Q1015 indica:</h3>
+<label><input type="radio" name="q4" value="Vento calmo"> Vento calmo</label>
+<label><input type="radio" name="q4" value="Pista molhada"> Pista molhada</label>
+<label><input type="radio" name="q4" value="Céu encoberto"> Céu encoberto</label>
+<label><input type="radio" name="q4" value="Poucas nuvens a 2.000 pés"> Poucas nuvens a 2.000 pés</label>
+<input type="hidden" name="a4" value="Poucas nuvens a 2.000 pés">
 <button onclick="corrigirQuestao(4)">Corrigir</button>
 <div class="result" id="feedback4"></div>
 </div>
 
 <script>
-const explicacoes = ["A alternativa correta é: \"Precipitação que evapora antes de atingir o solo\".", "A alternativa correta é: \"Poucas nuvens a 2.000 pés\".", "A alternativa correta é: \"Cumulonimbus\".", "A alternativa correta é: \"Pressão caindo\".", "A alternativa correta é: \"Cair\"."];
+const explicacoes = ["A alternativa correta é: \"Pressão caindo\". Essa questão envolve frentes, nuvens, visibilidade, pressão atmosférica ou interpretação de METAR. Lembre-se das características das frentes frias e nuvens associadas.", "A alternativa correta é: \"Precipitação que evapora antes de atingir o solo\". Essa questão envolve frentes, nuvens, visibilidade, pressão atmosférica ou interpretação de METAR. Lembre-se das características das frentes frias e nuvens associadas.", "A alternativa correta é: \"Cumulonimbus\". Essa questão envolve frentes, nuvens, visibilidade, pressão atmosférica ou interpretação de METAR. Lembre-se das características das frentes frias e nuvens associadas.", "A alternativa correta é: \"Cair\". Essa questão envolve frentes, nuvens, visibilidade, pressão atmosférica ou interpretação de METAR. Lembre-se das características das frentes frias e nuvens associadas.", "A alternativa correta é: \"Poucas nuvens a 2.000 pés\". Essa questão envolve frentes, nuvens, visibilidade, pressão atmosférica ou interpretação de METAR. Lembre-se das características das frentes frias e nuvens associadas."];
 
 <script>
 function corrigirQuestao(i) {
     const correta = document.querySelector(`input[name=a${i}]`).value;
     const alternativas = document.getElementsByName(`q${i}`);
+    const feedback = document.getElementById(`feedback${i}`);
     let marcada = null;
+
     for (let alt of alternativas) {
         if (alt.checked) {
             marcada = alt.value;
         }
     }
 
-    const feedback = document.getElementById(`feedback${i}`);
+    if (!marcada) {
+        feedback.innerHTML = "<span style='color:orange;'>⚠️ Nenhuma alternativa marcada.</span>";
+        return;
+    }
+
     if (marcada === correta) {
         feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
     } else {
-        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br><strong>Você marcou:</strong> <em>${marcada}</em><br><strong>Correta:</strong> ${correta}<br><small>${explicacoes[i]}</small>`;
     }
 }
 </script>

@@ -64,7 +64,7 @@ button:hover {
 
 </head>
 <body>
-    <h1>Simulado RG – ANAC PP</h1>
+    <h1>Simulado Regras de Tráfego Aéreo (RG) – ANAC PP</h1>
 
 <script>
 const explicacoes = [];
@@ -73,18 +73,24 @@ const explicacoes = [];
 function corrigirQuestao(i) {
     const correta = document.querySelector(`input[name=a${i}]`).value;
     const alternativas = document.getElementsByName(`q${i}`);
+    const feedback = document.getElementById(`feedback${i}`);
     let marcada = null;
+
     for (let alt of alternativas) {
         if (alt.checked) {
             marcada = alt.value;
         }
     }
 
-    const feedback = document.getElementById(`feedback${i}`);
+    if (!marcada) {
+        feedback.innerHTML = "<span style='color:orange;'>⚠️ Nenhuma alternativa marcada.</span>";
+        return;
+    }
+
     if (marcada === correta) {
         feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
     } else {
-        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br><strong>Você marcou:</strong> <em>${marcada}</em><br><strong>Correta:</strong> ${correta}<br><small>${explicacoes[i]}</small>`;
     }
 }
 </script>

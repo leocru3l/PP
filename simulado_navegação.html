@@ -66,22 +66,22 @@ button:hover {
 <body>
     <h1>Simulado Navegação (NV) – ANAC PP</h1>
     <div class="question">
-<h3>1. A carta WAC possui escala de:</h3>
-<label><input type="radio" name="q0" value="1:500.000"> 1:500.000</label>
-<label><input type="radio" name="q0" value="1:250.000"> 1:250.000</label>
-<label><input type="radio" name="q0" value="1:1.000.000"> 1:1.000.000</label>
-<label><input type="radio" name="q0" value="1:750.000"> 1:750.000</label>
-<input type="hidden" name="a0" value="1:1.000.000">
+<h3>1. A carta Mercator é indicada para voos:</h3>
+<label><input type="radio" name="q0" value="Curto alcance"> Curto alcance</label>
+<label><input type="radio" name="q0" value="Longo alcance com rota loxodrômica"> Longo alcance com rota loxodrômica</label>
+<label><input type="radio" name="q0" value="Com navegação por GPS"> Com navegação por GPS</label>
+<label><input type="radio" name="q0" value="Com orientação por balizas NDB"> Com orientação por balizas NDB</label>
+<input type="hidden" name="a0" value="Longo alcance com rota loxodrômica">
 <button onclick="corrigirQuestao(0)">Corrigir</button>
 <div class="result" id="feedback0"></div>
 </div>
 <div class="question">
-<h3>2. Qual instrumento usamos para calcular VV/DV e GS?</h3>
-<label><input type="radio" name="q1" value="Régua"> Régua</label>
-<label><input type="radio" name="q1" value="Computador de voo"> Computador de voo</label>
-<label><input type="radio" name="q1" value="Cartão de navegação"> Cartão de navegação</label>
-<label><input type="radio" name="q1" value="Altímetro"> Altímetro</label>
-<input type="hidden" name="a1" value="Computador de voo">
+<h3>2. A carta WAC possui escala de:</h3>
+<label><input type="radio" name="q1" value="1:500.000"> 1:500.000</label>
+<label><input type="radio" name="q1" value="1:250.000"> 1:250.000</label>
+<label><input type="radio" name="q1" value="1:1.000.000"> 1:1.000.000</label>
+<label><input type="radio" name="q1" value="1:750.000"> 1:750.000</label>
+<input type="hidden" name="a1" value="1:1.000.000">
 <button onclick="corrigirQuestao(1)">Corrigir</button>
 <div class="result" id="feedback1"></div>
 </div>
@@ -96,45 +96,51 @@ button:hover {
 <div class="result" id="feedback2"></div>
 </div>
 <div class="question">
-<h3>4. A carta Mercator é indicada para voos:</h3>
-<label><input type="radio" name="q3" value="Curto alcance"> Curto alcance</label>
-<label><input type="radio" name="q3" value="Longo alcance com rota loxodrômica"> Longo alcance com rota loxodrômica</label>
-<label><input type="radio" name="q3" value="Com navegação por GPS"> Com navegação por GPS</label>
-<label><input type="radio" name="q3" value="Com orientação por balizas NDB"> Com orientação por balizas NDB</label>
-<input type="hidden" name="a3" value="Longo alcance com rota loxodrômica">
+<h3>4. 370 km equivalem a quantas milhas náuticas?</h3>
+<label><input type="radio" name="q3" value="199,8 NM"> 199,8 NM</label>
+<label><input type="radio" name="q3" value="270,5 NM"> 270,5 NM</label>
+<label><input type="radio" name="q3" value="330,2 NM"> 330,2 NM</label>
+<label><input type="radio" name="q3" value="420,4 NM"> 420,4 NM</label>
+<input type="hidden" name="a3" value="199,8 NM">
 <button onclick="corrigirQuestao(3)">Corrigir</button>
 <div class="result" id="feedback3"></div>
 </div>
 <div class="question">
-<h3>5. 370 km equivalem a quantas milhas náuticas?</h3>
-<label><input type="radio" name="q4" value="199,8 NM"> 199,8 NM</label>
-<label><input type="radio" name="q4" value="270,5 NM"> 270,5 NM</label>
-<label><input type="radio" name="q4" value="330,2 NM"> 330,2 NM</label>
-<label><input type="radio" name="q4" value="420,4 NM"> 420,4 NM</label>
-<input type="hidden" name="a4" value="199,8 NM">
+<h3>5. Qual instrumento usamos para calcular VV/DV e GS?</h3>
+<label><input type="radio" name="q4" value="Régua"> Régua</label>
+<label><input type="radio" name="q4" value="Computador de voo"> Computador de voo</label>
+<label><input type="radio" name="q4" value="Cartão de navegação"> Cartão de navegação</label>
+<label><input type="radio" name="q4" value="Altímetro"> Altímetro</label>
+<input type="hidden" name="a4" value="Computador de voo">
 <button onclick="corrigirQuestao(4)">Corrigir</button>
 <div class="result" id="feedback4"></div>
 </div>
 
 <script>
-const explicacoes = ["A alternativa correta é: \"1:1.000.000\".", "A alternativa correta é: \"Computador de voo\".", "A alternativa correta é: \"6L\".", "A alternativa correta é: \"Longo alcance com rota loxodrômica\".", "A alternativa correta é: \"199,8 NM\"."];
+const explicacoes = ["A alternativa correta é: \"Longo alcance com rota loxodrômica\". Essa questão avalia conhecimentos sobre cartas aeronáuticas, consumo de combustível, escalas ou conversões. Verifique os conceitos de Mercator, WAC e uso do computador de voo.", "A alternativa correta é: \"1:1.000.000\". Essa questão avalia conhecimentos sobre cartas aeronáuticas, consumo de combustível, escalas ou conversões. Verifique os conceitos de Mercator, WAC e uso do computador de voo.", "A alternativa correta é: \"6L\". Essa questão avalia conhecimentos sobre cartas aeronáuticas, consumo de combustível, escalas ou conversões. Verifique os conceitos de Mercator, WAC e uso do computador de voo.", "A alternativa correta é: \"199,8 NM\". Essa questão avalia conhecimentos sobre cartas aeronáuticas, consumo de combustível, escalas ou conversões. Verifique os conceitos de Mercator, WAC e uso do computador de voo.", "A alternativa correta é: \"Computador de voo\". Essa questão avalia conhecimentos sobre cartas aeronáuticas, consumo de combustível, escalas ou conversões. Verifique os conceitos de Mercator, WAC e uso do computador de voo."];
 
 <script>
 function corrigirQuestao(i) {
     const correta = document.querySelector(`input[name=a${i}]`).value;
     const alternativas = document.getElementsByName(`q${i}`);
+    const feedback = document.getElementById(`feedback${i}`);
     let marcada = null;
+
     for (let alt of alternativas) {
         if (alt.checked) {
             marcada = alt.value;
         }
     }
 
-    const feedback = document.getElementById(`feedback${i}`);
+    if (!marcada) {
+        feedback.innerHTML = "<span style='color:orange;'>⚠️ Nenhuma alternativa marcada.</span>";
+        return;
+    }
+
     if (marcada === correta) {
         feedback.innerHTML = `<span style='color:green;'><strong>✅ Correta!</strong></span><br><small>${explicacoes[i]}</small>`;
     } else {
-        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br>Sua resposta: <em>${marcada || "Nenhuma"}</em><br><small>${explicacoes[i]}</small>`;
+        feedback.innerHTML = `<span style='color:red;'><strong>❌ Errada.</strong></span><br><strong>Você marcou:</strong> <em>${marcada}</em><br><strong>Correta:</strong> ${correta}<br><small>${explicacoes[i]}</small>`;
     }
 }
 </script>
